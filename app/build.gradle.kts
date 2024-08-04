@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.matinsamedani.zqshop"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -52,6 +53,7 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.annotations)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -66,4 +68,40 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Navigation
+    implementation(libs.navigation)
+
+    //System ui controller
+    implementation(libs.system.ui.controller)
+
+    //Responsive layout
+    implementation(libs.accompanist.adaptive)
+    implementation(libs.windows.size.classes)
+
+    //LiveData-State
+    implementation(libs.live.data.state)
+
+    //Coil
+    implementation(libs.coil)
+
+    //Koin
+    implementation(libs.cokoin)
+    implementation(libs.cokoin.viewmodel)
+    implementation(libs.cokoin.navigation)
+
+    //Coroutines
+    implementation(libs.coroutines)
+    implementation(libs.lifecycle.runtime.compose)
+
+    //Parse Platform
+    implementation(libs.parse.platform)
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Room
+    implementation(libs.room)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
 }

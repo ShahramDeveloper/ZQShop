@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.1"
+annotations = "23.0.0"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -9,8 +10,22 @@ lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 
+navigation = "2.7.7"
+systemUiController = "0.33.2-alpha"
+accompanistAdaptive = "0.35.0-alpha"
+windowsSizeClasses = "1.2.1"
+liveDataState = "1.6.8"
+coil = "2.0.0-rc02"
+koin = "1.0.0"
+coroutines = "1.7.3"
+lifecycleRuntimeCompose = "2.8.4"
+parsePlatform = "3.0.0"
+retrofit = "2.9.0"
+room = "2.6.1"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -25,7 +40,23 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+system-ui-controller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "systemUiController" }
+accompanist-adaptive = { group = "com.google.accompanist", name = "accompanist-adaptive", version.ref = "accompanistAdaptive"}
+windows-size-classes = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "windowsSizeClasses"}
+live-data-state = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "liveDataState" }
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+cokoin = { group = "dev.burnoo", name = "cokoin", version.ref = "koin" }
+cokoin-viewmodel = { group = "dev.burnoo", name = "cokoin-android-viewmodel", version.ref = "koin" }
+cokoin-navigation = { group = "dev.burnoo", name = "cokoin-android-navigation", version.ref = "koin" }
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
+parse-platform = { group = "com.github.parse-community.Parse-SDK-Android", name = "parse", version.ref = "parsePlatform" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+room = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
