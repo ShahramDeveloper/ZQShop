@@ -1,58 +1,92 @@
 package com.matinsamedani.zqshop.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = primaryDark,
+    onPrimary = onPrimaryDark,
+    primaryContainer = primaryContainerDark,
+    onPrimaryContainer = onPrimaryContainerDark,
+    secondary = secondaryDark,
+    onSecondary = onSecondaryDark,
+    secondaryContainer = secondaryContainerDark,
+    onSecondaryContainer = onSecondaryContainerDark,
+    background = backgroundDark,
+    onBackground = onBackgroundDark,
+    tertiary = tertiaryDark,
+    onTertiary = onTertiaryDark,
+    tertiaryContainer = tertiaryContainerDark,
+    onTertiaryContainer = onTerTertiaryContainerDark,
+    error = errorDark,
+    onError = onErrorDark,
+    errorContainer = errorContainerDark,
+    onErrorContainer = onErrorContainerDark,
+    surfaceDim = surfaceDimDark,
+    surface = surfaceDark,
+    surfaceBright = surfaceBrightDark,
+    surfaceContainerLowest = surfaceContainerLowestDark,
+    surfaceContainerLow = surfaceContainerLowDark,
+    surfaceContainer = surfaceContainerDark,
+    surfaceContainerHigh = surfaceContainerHighDark,
+    surfaceContainerHighest = surfaceContainerHighestDark,
+    onSurface = onSurfaceDark,
+    onSurfaceVariant = onSurfaceVariantDark,
+    inverseSurface = inverseSurfaceDark,
+    inverseOnSurface = inverseOnSurfaceDark,
+    inversePrimary = inversePrimaryDark,
+    outline = outLineDark,
+    outlineVariant = outLineVariantDark
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = primaryLight,
+    onPrimary = onPrimaryLight,
+    primaryContainer = primaryContainerLight,
+    onPrimaryContainer = onPrimaryContainerLight,
+    secondary = secondaryLight,
+    onSecondary = onSecondaryLight,
+    secondaryContainer = secondaryContainerLight,
+    onSecondaryContainer = onSecondaryContainerLight,
+    background = backgroundLight,
+    onBackground = onBackgroundLight,
+    tertiary = tertiaryLight,
+    onTertiary = onTertiaryLight,
+    tertiaryContainer = tertiaryContainerLight,
+    onTertiaryContainer = onTerTertiaryContainerLight,
+    error = errorLight,
+    onError = onErrorLight,
+    errorContainer = errorContainerLight,
+    onErrorContainer = onErrorContainerLight,
+    surfaceDim = surfaceDimLight,
+    surface = surfaceLight,
+    surfaceBright = surfaceBrightLight,
+    surfaceContainerLowest = surfaceContainerLowestLight,
+    surfaceContainerLow = surfaceContainerLowLight,
+    surfaceContainer = surfaceContainerLight,
+    surfaceContainerHigh = surfaceContainerHighLight,
+    surfaceContainerHighest = surfaceContainerHighestLight,
+    onSurface = onSurfaceLight,
+    onSurfaceVariant = onSurfaceVariantLight,
+    inverseSurface = inverseSurfaceLight,
+    inverseOnSurface = inverseOnSurfaceLight,
+    inversePrimary = inversePrimaryLight,
+    outline = outLineLight,
+    outlineVariant = outLineVariantLight,
 )
 
 @Composable
 fun ZQShopTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colors = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
+        colorScheme = colors,
         content = content
     )
 }
