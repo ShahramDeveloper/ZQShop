@@ -9,17 +9,13 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -41,7 +37,6 @@ import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.MeasurePolicy
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.offset
 import com.matinsamedani.zqshop.R
@@ -76,18 +71,6 @@ fun ZQShopNavigationRail(
                             )
                         }
                     )
-                    FloatingActionButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier.padding(top = 8.dp, bottom = 32.dp),
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = "",
-                            modifier = Modifier.size(18.dp)
-                        )
-                    }
                     Spacer(Modifier.height(8.dp))
                     Spacer(Modifier.height(4.dp))
                 }
@@ -164,25 +147,6 @@ fun PermanentNavigationDrawerContent(
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.primary
                     )
-                    ExtendedFloatingActionButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp, bottom = 40.dp),
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = "",
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Text(
-                            text = "FAB Button",
-                            modifier = Modifier.weight(1f),
-                            textAlign = TextAlign.Center
-                        )
-                    }
                 }
 
                 Column(
@@ -258,26 +222,6 @@ fun ModalNavigationDrawerContent(
                                 contentDescription = ""
                             )
                         }
-                    }
-
-                    ExtendedFloatingActionButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp, bottom = 40.dp),
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = "",
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Text(
-                            text = "FAB Button",
-                            modifier = Modifier.weight(1f),
-                            textAlign = TextAlign.Center
-                        )
                     }
                 }
 
