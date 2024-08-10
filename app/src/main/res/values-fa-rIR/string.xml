@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">زدکیو شاپ</string>
+
+    //Bottom navigation tap
+    <string name="tab_home">خانه</string>
+    <string name="tab_explore">ویترین</string>
+    <string name="tab_profile">پروفایل</string>
+</resources>
