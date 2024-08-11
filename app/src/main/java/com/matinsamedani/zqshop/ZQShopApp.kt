@@ -24,7 +24,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
-import com.matinsamedani.zqshop.ui.features.welcome.WelcomeScreen
 import com.matinsamedani.zqshop.ui.navigation.ModalNavigationDrawerContent
 import com.matinsamedani.zqshop.ui.navigation.PermanentNavigationDrawerContent
 import com.matinsamedani.zqshop.ui.navigation.ZQShopBottomNavigationBar
@@ -270,10 +269,7 @@ private fun ZQShopNavHost(
         startDestination = ZQShopRoute.WELCOME,
     ) {
         composable(ZQShopRoute.WELCOME) {
-            WelcomeScreen(
-                contentType = contentType,
-                displayFeatures = displayFeatures,
-            )
+
         }
         composable(ZQShopRoute.SIGN_UP) {
 
