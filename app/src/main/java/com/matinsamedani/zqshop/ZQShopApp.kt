@@ -19,12 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
+import com.matinsamedani.zqshop.ui.features.welcome.WelcomeScreen
 import com.matinsamedani.zqshop.ui.navigation.ModalNavigationDrawerContent
 import com.matinsamedani.zqshop.ui.navigation.PermanentNavigationDrawerContent
 import com.matinsamedani.zqshop.ui.navigation.ZQShopBottomNavigationBar
@@ -132,56 +132,75 @@ fun ZQShopNavigationWrapper(
     val selectedDestination =
         navBackStackEntry?.destination?.route ?: ZQShopRoute.HOME
 
-    if (navigationType == ZQShopNavigationType.PERMANENT_NAVIGATION_DRAWER) {
-        PermanentNavigationDrawer(
-            drawerContent = {
-                PermanentNavigationDrawerContent(
-                    selectedDestination = selectedDestination,
+    // Determine whether to show navigation components
+    val showNavigationComponents = selectedDestination !in listOf(
+        ZQShopRoute.WELCOME,
+        ZQShopRoute.SIGN_UP,
+        ZQShopRoute.SIGN_IN
+    )
+
+    if (showNavigationComponents) {
+        if (navigationType == ZQShopNavigationType.PERMANENT_NAVIGATION_DRAWER) {
+            PermanentNavigationDrawer(
+                drawerContent = {
+                    PermanentNavigationDrawerContent(
+                        selectedDestination = selectedDestination,
+                        navigationContentPosition = navigationContentPosition,
+                        navigateToTopLevelDestination = navigationActions::navigateTo,
+                    )
+                }
+            ) {
+                ZQShopAppContent(
+                    navigationType = navigationType,
+                    contentType = contentType,
+                    displayFeatures = displayFeatures,
                     navigationContentPosition = navigationContentPosition,
+                    navController = navController,
+                    selectedDestination = selectedDestination,
                     navigateToTopLevelDestination = navigationActions::navigateTo,
                 )
             }
-        ) {
-            ZQShopAppContent(
-                navigationType = navigationType,
-                contentType = contentType,
-                displayFeatures = displayFeatures,
-                navigationContentPosition = navigationContentPosition,
-                navController = navController,
-                selectedDestination = selectedDestination,
-                navigateToTopLevelDestination = navigationActions::navigateTo,
-            )
-        }
-    } else {
-        ModalNavigationDrawer(
-            drawerContent = {
-                ModalNavigationDrawerContent(
-                    selectedDestination = selectedDestination,
-                    navigationContentPosition = navigationContentPosition,
-                    navigateToTopLevelDestination = navigationActions::navigateTo,
-                    onDrawerClicked = {
-                        scope.launch {
-                            drawerState.close()
+        } else {
+            ModalNavigationDrawer(
+                drawerContent = {
+                    ModalNavigationDrawerContent(
+                        selectedDestination = selectedDestination,
+                        navigationContentPosition = navigationContentPosition,
+                        navigateToTopLevelDestination = navigationActions::navigateTo,
+                        onDrawerClicked = {
+                            scope.launch {
+                                drawerState.close()
+                            }
                         }
-                    }
-                )
-            },
-            drawerState = drawerState
-        ) {
-            ZQShopAppContent(
-                navigationType = navigationType,
-                contentType = contentType,
-                displayFeatures = displayFeatures,
-                navigationContentPosition = navigationContentPosition,
-                navController = navController,
-                selectedDestination = selectedDestination,
-                navigateToTopLevelDestination = navigationActions::navigateTo,
+                    )
+                },
+                drawerState = drawerState
             ) {
-                scope.launch {
-                    drawerState.open()
+                ZQShopAppContent(
+                    navigationType = navigationType,
+                    contentType = contentType,
+                    displayFeatures = displayFeatures,
+                    navigationContentPosition = navigationContentPosition,
+                    navController = navController,
+                    selectedDestination = selectedDestination,
+                    navigateToTopLevelDestination = navigationActions::navigateTo,
+                ) {
+                    scope.launch {
+                        drawerState.open()
+                    }
                 }
             }
         }
+    } else {
+        ZQShopAppContent(
+            navigationType = ZQShopNavigationType.NULL,
+            contentType = contentType,
+            displayFeatures = displayFeatures,
+            navigationContentPosition = navigationContentPosition,
+            navController = navController,
+            selectedDestination = selectedDestination,
+            navigateToTopLevelDestination = navigationActions::navigateTo,
+        )
     }
 }
 
@@ -197,34 +216,43 @@ fun ZQShopAppContent(
     navigateToTopLevelDestination: (ZQShopTopLevelDestination) -> Unit,
     onDrawerClicked: () -> Unit = {}
 ) {
-    Row(modifier = modifier.fillMaxSize()) {
-        AnimatedVisibility(visible = navigationType == ZQShopNavigationType.NAVIGATION_RAIL) {
-            ZQShopNavigationRail(
-                selectedDestination = selectedDestination,
-                navigationContentPosition = navigationContentPosition,
-                navigateToTopLevelDestination = navigateToTopLevelDestination,
-                onDrawerClicked = onDrawerClicked,
-            )
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
-        ) {
-            ZQShopNavHost(
-                navController = navController,
-                contentType = contentType,
-                displayFeatures = displayFeatures,
-                navigationType = navigationType,
-                modifier = Modifier.weight(1f),
-            )
-            AnimatedVisibility(visible = navigationType == ZQShopNavigationType.BOTTOM_NAVIGATION) {
-                ZQShopBottomNavigationBar(
+    if (navigationType != ZQShopNavigationType.NULL) {
+        Row(modifier = modifier.fillMaxSize()) {
+            AnimatedVisibility(visible = navigationType == ZQShopNavigationType.NAVIGATION_RAIL) {
+                ZQShopNavigationRail(
                     selectedDestination = selectedDestination,
-                    navigateToTopLevelDestination = navigateToTopLevelDestination
+                    navigationContentPosition = navigationContentPosition,
+                    navigateToTopLevelDestination = navigateToTopLevelDestination,
+                    onDrawerClicked = onDrawerClicked,
                 )
             }
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.inverseOnSurface)
+            ) {
+                ZQShopNavHost(
+                    navController = navController,
+                    contentType = contentType,
+                    displayFeatures = displayFeatures,
+                    navigationType = navigationType,
+                    modifier = Modifier.weight(1f),
+                )
+                AnimatedVisibility(visible = navigationType == ZQShopNavigationType.BOTTOM_NAVIGATION) {
+                    ZQShopBottomNavigationBar(
+                        selectedDestination = selectedDestination,
+                        navigateToTopLevelDestination = navigateToTopLevelDestination
+                    )
+                }
+            }
         }
+    } else {
+        ZQShopNavHost(
+            navController = navController,
+            contentType = contentType,
+            displayFeatures = displayFeatures,
+            navigationType = navigationType,
+        )
     }
 }
 
@@ -242,7 +270,10 @@ private fun ZQShopNavHost(
         startDestination = ZQShopRoute.WELCOME,
     ) {
         composable(ZQShopRoute.WELCOME) {
-
+            WelcomeScreen(
+                contentType = contentType,
+                displayFeatures = displayFeatures,
+            )
         }
         composable(ZQShopRoute.SIGN_UP) {
 

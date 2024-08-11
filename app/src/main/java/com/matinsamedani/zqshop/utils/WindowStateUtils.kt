@@ -32,7 +32,7 @@ fun isSeparating(foldFeature: FoldingFeature?): Boolean {
 }
 
 enum class ZQShopNavigationType {
-    BOTTOM_NAVIGATION, NAVIGATION_RAIL, PERMANENT_NAVIGATION_DRAWER
+    BOTTOM_NAVIGATION, NAVIGATION_RAIL, PERMANENT_NAVIGATION_DRAWER, NULL
 }
 
 enum class ZQShopNavigationContentPosition {
