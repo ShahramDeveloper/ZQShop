@@ -26,6 +26,7 @@ import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
 import com.matinsamedani.zqshop.ui.navigation.ModalNavigationDrawerContent
 import com.matinsamedani.zqshop.ui.navigation.PermanentNavigationDrawerContent
+import com.matinsamedani.zqshop.ui.navigation.WelcomeScreen
 import com.matinsamedani.zqshop.ui.navigation.ZQShopBottomNavigationBar
 import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationActions
 import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationRail
@@ -269,7 +270,10 @@ private fun ZQShopNavHost(
         startDestination = ZQShopRoute.WELCOME,
     ) {
         composable(ZQShopRoute.WELCOME) {
-
+            WelcomeScreen(
+                contentType = contentType,
+                displayFeatures = displayFeatures
+            )
         }
         composable(ZQShopRoute.SIGN_UP) {
 
