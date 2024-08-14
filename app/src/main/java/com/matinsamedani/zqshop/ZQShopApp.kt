@@ -1,5 +1,7 @@
 package com.matinsamedani.zqshop
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -14,9 +16,13 @@ import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -132,12 +138,16 @@ fun ZQShopNavigationWrapper(
     val selectedDestination =
         navBackStackEntry?.destination?.route ?: ZQShopRoute.HOME
 
-    // Determine whether to show navigation components
-    val showNavigationComponents = selectedDestination !in listOf(
-        ZQShopRoute.WELCOME,
-        ZQShopRoute.SIGN_UP,
-        ZQShopRoute.SIGN_IN
-    )
+    var showNavigationComponents by rememberSaveable { mutableStateOf(false) }
+
+    // Update showNavigationComponents state based on the current destination
+    LaunchedEffect(navBackStackEntry) {
+        showNavigationComponents = navBackStackEntry?.destination?.route !in listOf(
+            ZQShopRoute.WELCOME,
+            ZQShopRoute.SIGN_UP,
+            ZQShopRoute.SIGN_IN
+        )
+    }
 
     if (showNavigationComponents) {
         if (navigationType == ZQShopNavigationType.PERMANENT_NAVIGATION_DRAWER) {
@@ -272,7 +282,7 @@ private fun ZQShopNavHost(
         composable(ZQShopRoute.WELCOME) {
             WelcomeScreen(
                 contentType = contentType,
-                displayFeatures = displayFeatures
+                displayFeatures = displayFeatures,
             )
         }
         composable(ZQShopRoute.SIGN_UP) {
