@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">زدکیو شاپ</string>
+    <string name="app_name">ZQ SHOP</string>
 
     //Bottom navigation tap
     <string name="tab_home">خانه</string>
     <string name="tab_explore">ویترین</string>
     <string name="tab_profile">پروفایل</string>
+
+    //Welcome screen
+    <string name="sign_up_button">ثبت نام</string>
+    <string name="sign_in_button">ورود</string>
+
 </resources>

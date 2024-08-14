@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">ZQ Shop</string>
+    <string name="app_name">ZQ SHOP</string>
 
     //Bottom navigation tap
     <string name="tab_home">Home</string>
     <string name="tab_explore">Explore</string>
     <string name="tab_profile">Profile</string>
+
+    //Welcome screen
+    <string name="sign_up_button">Sign up</string>
+    <string name="sign_in_button">Sing in</string>
 </resources>

@@ -1,7 +1,5 @@
 package com.matinsamedani.zqshop
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -32,7 +30,7 @@ import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
 import com.matinsamedani.zqshop.ui.navigation.ModalNavigationDrawerContent
 import com.matinsamedani.zqshop.ui.navigation.PermanentNavigationDrawerContent
-import com.matinsamedani.zqshop.ui.navigation.WelcomeScreen
+import com.matinsamedani.zqshop.ui.features.welcome.WelcomeScreen
 import com.matinsamedani.zqshop.ui.navigation.ZQShopBottomNavigationBar
 import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationActions
 import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationRail
@@ -283,6 +281,7 @@ private fun ZQShopNavHost(
             WelcomeScreen(
                 contentType = contentType,
                 displayFeatures = displayFeatures,
+                navController = navController
             )
         }
         composable(ZQShopRoute.SIGN_UP) {

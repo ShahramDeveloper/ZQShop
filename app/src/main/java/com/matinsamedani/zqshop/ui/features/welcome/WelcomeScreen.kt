@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.ui.navigation
+package com.matinsamedani.zqshop.ui.features.welcome
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -30,20 +30,28 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.window.layout.DisplayFeature
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
 import com.google.accompanist.adaptive.TwoPane
 import com.matinsamedani.zqshop.R
+import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationActions
+import com.matinsamedani.zqshop.ui.navigation.ZQShopRoute
 import com.matinsamedani.zqshop.utils.ZQShopContentType
 
 @Composable
-fun WelcomeScreen(contentType: ZQShopContentType, displayFeatures: List<DisplayFeature>) {
+fun WelcomeScreen(
+    navController: NavHostController,
+    contentType: ZQShopContentType,
+    displayFeatures: List<DisplayFeature>
+) {
 
     val animationDuration = 1000
 
@@ -70,12 +78,19 @@ fun WelcomeScreen(contentType: ZQShopContentType, displayFeatures: List<DisplayF
         if (contentType == ZQShopContentType.DUAL_PANE) {
             TwoPane(
                 first = { WelcomeFirstPaneContent() },
-                second = { WelcomeSecondPaneContent(innerPadding, textAlpha, buttonAlpha) },
+                second = {
+                    WelcomeSecondPaneContent(
+                        innerPadding,
+                        navController,
+                        textAlpha,
+                        buttonAlpha
+                    )
+                },
                 strategy = HorizontalTwoPaneStrategy(splitFraction = 0.5f),
                 displayFeatures = displayFeatures
             )
         } else {
-            WelcomeSinglePaneContent(innerPadding, textAlpha, buttonAlpha)
+            WelcomeSinglePaneContent(innerPadding, navController, textAlpha, buttonAlpha)
         }
     }
 }
@@ -101,8 +116,12 @@ fun WelcomeFirstPaneContent() {
 }
 
 @Composable
-fun WelcomeSecondPaneContent(innerPadding: PaddingValues, textAlpha: Float, buttonAlpha: Float) {
-
+fun WelcomeSecondPaneContent(
+    innerPadding: PaddingValues,
+    navController: NavHostController,
+    textAlpha: Float,
+    buttonAlpha: Float
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -156,13 +175,13 @@ fun WelcomeSecondPaneContent(innerPadding: PaddingValues, textAlpha: Float, butt
                 modifier = Modifier
                     .fillMaxWidth()
                     .alpha(buttonAlpha),
-                onClick = { },
+                onClick = { navController.navigate(ZQShopRoute.SIGN_UP) },
                 colors = ButtonDefaults.buttonColors(
                     Color.White
                 )
             ) {
                 Text(
-                    text = "Sign up",
+                    text = stringResource(id = R.string.sign_up_button),
                     fontFamily = FontFamily(Font(R.font.vazirmatn_medium)),
                     fontSize = 24.sp,
                     color = Color.Black
@@ -175,10 +194,10 @@ fun WelcomeSecondPaneContent(innerPadding: PaddingValues, textAlpha: Float, butt
                 modifier = Modifier
                     .fillMaxWidth()
                     .alpha(buttonAlpha),
-                onClick = { /*TODO*/ }
+                onClick = { navController.navigate(ZQShopRoute.SIGN_IN) }
             ) {
                 Text(
-                    text = "Sign in",
+                    text = stringResource(id = R.string.sign_in_button),
                     fontFamily = FontFamily(Font(R.font.vazirmatn_medium)),
                     fontSize = 24.sp,
                     color = Color.White
@@ -191,7 +210,12 @@ fun WelcomeSecondPaneContent(innerPadding: PaddingValues, textAlpha: Float, butt
 }
 
 @Composable
-fun WelcomeSinglePaneContent(innerPadding: PaddingValues, textAlpha: Float, buttonAlpha: Float) {
+fun WelcomeSinglePaneContent(
+    innerPadding: PaddingValues,
+    navController: NavHostController,
+    textAlpha: Float,
+    buttonAlpha: Float
+) {
 
     Image(
         painter = painterResource(id = R.drawable.welcome_bg),
@@ -253,13 +277,13 @@ fun WelcomeSinglePaneContent(innerPadding: PaddingValues, textAlpha: Float, butt
                 modifier = Modifier
                     .fillMaxWidth()
                     .alpha(buttonAlpha),
-                onClick = { },
+                onClick = { navController.navigate(ZQShopRoute.SIGN_UP) },
                 colors = ButtonDefaults.buttonColors(
                     Color.White
                 )
             ) {
                 Text(
-                    text = "Sign up",
+                    text = stringResource(id = R.string.sign_up_button),
                     fontFamily = FontFamily(Font(R.font.vazirmatn_medium)),
                     fontSize = 24.sp,
                     color = Color.Black
@@ -272,10 +296,10 @@ fun WelcomeSinglePaneContent(innerPadding: PaddingValues, textAlpha: Float, butt
                 modifier = Modifier
                     .fillMaxWidth()
                     .alpha(buttonAlpha),
-                onClick = { /*TODO*/ }
+                onClick = { navController.navigate(ZQShopRoute.SIGN_IN) }
             ) {
                 Text(
-                    text = "Sign in",
+                    text = stringResource(id = R.string.sign_in_button),
                     fontFamily = FontFamily(Font(R.font.vazirmatn_medium)),
                     fontSize = 24.sp,
                     color = Color.White
