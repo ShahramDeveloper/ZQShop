@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop
+package com.shahram.zqshop
 
 import org.junit.Test
 

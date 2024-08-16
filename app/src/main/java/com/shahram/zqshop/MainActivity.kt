@@ -1,24 +1,19 @@
-package com.matinsamedani.zqshop
+package com.shahram.zqshop
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.adaptive.calculateDisplayFeatures
-import com.matinsamedani.zqshop.di.ZQShopModules
-import com.matinsamedani.zqshop.ui.theme.ZQShopTheme
+import com.shahram.zqshop.di.ZQShopModules
+import com.shahram.zqshop.ui.theme.ZQShopTheme
 import dev.burnoo.cokoin.Koin
 import org.koin.android.ext.koin.androidContext
 

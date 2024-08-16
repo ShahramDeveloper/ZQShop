@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.ui.theme
+package com.shahram.zqshop.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

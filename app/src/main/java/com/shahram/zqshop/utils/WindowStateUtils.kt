@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.utils
+package com.shahram.zqshop.utils
 
 import android.graphics.Rect
 import androidx.window.layout.FoldingFeature

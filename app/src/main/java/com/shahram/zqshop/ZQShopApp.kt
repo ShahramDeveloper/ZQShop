@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop
+package com.shahram.zqshop
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -28,20 +28,20 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
-import com.matinsamedani.zqshop.ui.navigation.ModalNavigationDrawerContent
-import com.matinsamedani.zqshop.ui.navigation.PermanentNavigationDrawerContent
-import com.matinsamedani.zqshop.ui.features.welcome.WelcomeScreen
-import com.matinsamedani.zqshop.ui.navigation.ZQShopBottomNavigationBar
-import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationActions
-import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationRail
-import com.matinsamedani.zqshop.ui.navigation.ZQShopRoute
-import com.matinsamedani.zqshop.ui.navigation.ZQShopTopLevelDestination
-import com.matinsamedani.zqshop.utils.DevicePosture
-import com.matinsamedani.zqshop.utils.ZQShopContentType
-import com.matinsamedani.zqshop.utils.ZQShopNavigationContentPosition
-import com.matinsamedani.zqshop.utils.ZQShopNavigationType
-import com.matinsamedani.zqshop.utils.isBookPosture
-import com.matinsamedani.zqshop.utils.isSeparating
+import com.shahram.zqshop.ui.navigation.ModalNavigationDrawerContent
+import com.shahram.zqshop.ui.navigation.PermanentNavigationDrawerContent
+import com.shahram.zqshop.ui.features.welcome.WelcomeScreen
+import com.shahram.zqshop.ui.navigation.ZQShopBottomNavigationBar
+import com.shahram.zqshop.ui.navigation.ZQShopNavigationActions
+import com.shahram.zqshop.ui.navigation.ZQShopNavigationRail
+import com.shahram.zqshop.ui.navigation.ZQShopRoute
+import com.shahram.zqshop.ui.navigation.ZQShopTopLevelDestination
+import com.shahram.zqshop.utils.DevicePosture
+import com.shahram.zqshop.utils.ZQShopContentType
+import com.shahram.zqshop.utils.ZQShopNavigationContentPosition
+import com.shahram.zqshop.utils.ZQShopNavigationType
+import com.shahram.zqshop.utils.isBookPosture
+import com.shahram.zqshop.utils.isSeparating
 import dev.burnoo.cokoin.navigation.KoinNavHost
 import kotlinx.coroutines.launch
 

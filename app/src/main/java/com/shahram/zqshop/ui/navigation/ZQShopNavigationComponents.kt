@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.ui.navigation
+package com.shahram.zqshop.ui.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -39,8 +39,8 @@ import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.offset
-import com.matinsamedani.zqshop.R
-import com.matinsamedani.zqshop.utils.ZQShopNavigationContentPosition
+import com.shahram.zqshop.R
+import com.shahram.zqshop.utils.ZQShopNavigationContentPosition
 
 @Composable
 fun ZQShopNavigationRail(

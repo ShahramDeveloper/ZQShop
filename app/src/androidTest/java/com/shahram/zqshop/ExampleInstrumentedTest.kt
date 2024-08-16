@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop
+package com.shahram.zqshop
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

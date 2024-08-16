@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.utils
+package com.shahram.zqshop.utils
 
 sealed class ZQShopScreens(val route: String) {
     //Welcome screen

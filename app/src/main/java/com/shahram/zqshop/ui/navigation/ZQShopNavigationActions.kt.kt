@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.ui.navigation
+package com.shahram.zqshop.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -7,7 +7,7 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.matinsamedani.zqshop.R
+import com.shahram.zqshop.R
 
 object ZQShopRoute {
     //Welcome screen

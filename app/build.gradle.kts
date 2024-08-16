@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.matinsamedani.zqshop"
+    namespace = "com.shahram.zqshop"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.matinsamedani.zqshop"
+        applicationId = "com.shahram.zqshop"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

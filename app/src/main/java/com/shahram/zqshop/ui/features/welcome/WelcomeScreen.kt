@@ -1,4 +1,4 @@
-package com.matinsamedani.zqshop.ui.features.welcome
+package com.shahram.zqshop.ui.features.welcome
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -36,15 +36,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.window.layout.DisplayFeature
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
 import com.google.accompanist.adaptive.TwoPane
-import com.matinsamedani.zqshop.R
-import com.matinsamedani.zqshop.ui.navigation.ZQShopNavigationActions
-import com.matinsamedani.zqshop.ui.navigation.ZQShopRoute
-import com.matinsamedani.zqshop.utils.ZQShopContentType
+import com.shahram.zqshop.R
+import com.shahram.zqshop.ui.navigation.ZQShopRoute
+import com.shahram.zqshop.utils.ZQShopContentType
 
 @Composable
 fun WelcomeScreen(

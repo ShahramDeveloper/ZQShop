@@ -1,7 +1,7 @@
-package com.matinsamedani.zqshop.di
+package com.shahram.zqshop.di
 
 import android.content.Context
-import com.matinsamedani.zqshop.utils.USER_DATA
+import com.shahram.zqshop.utils.USER_DATA
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
