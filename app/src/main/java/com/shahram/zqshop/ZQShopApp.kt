@@ -28,6 +28,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
+import com.shahram.zqshop.ui.features.signUp.SignUpScreen
 import com.shahram.zqshop.ui.navigation.ModalNavigationDrawerContent
 import com.shahram.zqshop.ui.navigation.PermanentNavigationDrawerContent
 import com.shahram.zqshop.ui.features.welcome.WelcomeScreen
@@ -285,7 +286,11 @@ private fun ZQShopNavHost(
             )
         }
         composable(ZQShopRoute.SIGN_UP) {
-
+            SignUpScreen(
+                navController = navController,
+                contentType = contentType,
+                displayFeatures = displayFeatures
+            )
         }
         composable(ZQShopRoute.SIGN_IN) {
 
