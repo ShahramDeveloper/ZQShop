@@ -1,6 +1,10 @@
 package com.shahram.zqshop
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,9 +33,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
 import com.shahram.zqshop.ui.features.signUp.SignUpScreen
+import com.shahram.zqshop.ui.features.welcome.WelcomeScreen
 import com.shahram.zqshop.ui.navigation.ModalNavigationDrawerContent
 import com.shahram.zqshop.ui.navigation.PermanentNavigationDrawerContent
-import com.shahram.zqshop.ui.features.welcome.WelcomeScreen
 import com.shahram.zqshop.ui.navigation.ZQShopBottomNavigationBar
 import com.shahram.zqshop.ui.navigation.ZQShopNavigationActions
 import com.shahram.zqshop.ui.navigation.ZQShopNavigationRail
@@ -265,6 +269,8 @@ fun ZQShopAppContent(
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
+@SuppressLint("UnusedContentLambdaTargetStateParameter")
 @Composable
 private fun ZQShopNavHost(
     navController: NavHostController,
@@ -285,13 +291,23 @@ private fun ZQShopNavHost(
                 navController = navController
             )
         }
-        composable(ZQShopRoute.SIGN_UP) {
+
+        composable(
+            ZQShopRoute.SIGN_UP,
+            enterTransition = {
+                slideInHorizontally(initialOffsetX = { fullWidth -> fullWidth })
+            },
+            exitTransition = {
+                slideOutHorizontally(targetOffsetX = { fullWidth -> fullWidth })
+            }
+        ) {
             SignUpScreen(
                 navController = navController,
                 contentType = contentType,
                 displayFeatures = displayFeatures
             )
         }
+
         composable(ZQShopRoute.SIGN_IN) {
 
         }
